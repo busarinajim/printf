@@ -24,35 +24,31 @@ int _printf(const char *format, ...)
 			if (*ptr == 'c')
 			{
 				char c = va_arg(args, int);
+
 				write(1, &c, 1);
 				count++;
 			}
 			else if (*ptr == 's')
 			{
 				char *str = va_arg(args, char *);
+
 				while (*str != '\0')
 				{
 					write(1, str, 1);
 					str++;
 					count++;
 				}
-			}
-			else if (*ptr == '%')
+			} else if (*ptr == '%')
 			{
 				write(1, "%", 1);
 				count++;
 			}
-		}
-		else
+		} else
 		{
 			write(1, ptr, 1);
 			count++;
-		}
-		ptr++;
-	}
-
-	va_end(args);
-
-	return count;
+		} ptr++;
+	} va_end(args);
+	return (count);
 }
 
